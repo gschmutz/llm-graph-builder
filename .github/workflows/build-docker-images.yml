@@ -5,7 +5,6 @@ on:
     branches: 
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,11 +13,11 @@ jobs:
         include:
           - image: trivadis/llm-graph-builder-backend
             dockerfile: backend/Dockerfile
-            context_dir: llm-graph-builder-backend/latest           
+            context_dir: backend           
             tag: latest
           - image: trivadis/llm-graph-builder-frontend
             dockerfile: frontend/Dockerfile
-            context_dir: llm-graph-builder-frontend/latest           
+            context_dir: frontend
             tag: latest
     steps:
       - name: Checkout
