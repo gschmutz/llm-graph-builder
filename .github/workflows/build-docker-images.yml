@@ -19,6 +19,9 @@ jobs:
             dockerfile: frontend/Dockerfile
             context_dir: frontend
             tag: latest
+            build_args:
+              - VITE_BACKEND_API_URL=http://localhost:28414
+              - VITE_REACT_APP_SOURCES=local,youtube,wiki,s3,web            
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,3 +54,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ matrix.image }}:${{ matrix.tag }}
+          build-args: ${{ toJson(matrix.build_args) }}
